@@ -6,28 +6,30 @@ It does not judge quality, investment value, or scientific validity. Those jobs 
 
 ## Current Channels
 
-- Bioscience
-- Scientific Risk
-- Financial & Fiscal
+- Bio Medical
+- Financial Fiscal
 - VC Confidence
-- Market & Background
-- Execution & Team
+- Market and Background
+- Scientific Risk
+- Patent
 
-The first implemented connectors focus on clean public APIs:
+Implemented connector paths include:
 
 - PubMed
 - ClinicalTrials.gov
 - arXiv
 - bioRxiv
-
-Several requested sources are in the catalog but intentionally marked as future/provider-backed because they need paywall, scraping, archive, or licensing decisions:
-
 - Google Patents
-- SSRN
+- SSRN metadata
 - ASCO/AACR/AAN conference archives
-- Business Wire
-- Substack
+- Business Wire feed ingestion
+- Substack feed ingestion
 - ICTRP
+- SEC EDGAR
+- Yahoo Finance market quote context
+- VC confidence RSS feeds
+- Market/background RSS feeds
+- Unpaywall DOI helper
 
 ## Quick Start
 
@@ -47,7 +49,7 @@ The local admin app runs at `http://127.0.0.1:8000` and provides:
 - source-level refetch
 - watchlist refetch
 - recent packet and ingestion-run views
-- browser-rendered knowledge map from packets, channels, sources, and entity mentions
+- detailed knowledge-base tree from channel -> source -> packet -> entities/provenance
 
 For repeated polling:
 
@@ -63,5 +65,8 @@ Edit `config/watchlist.json` to add source/channel/query combinations.
 - SSRN and conference sources use Crossref metadata search as a first pass.
 - Business Wire requires configured authorized RSS/Atom feeds in `AGENTVC_BUSINESS_WIRE_FEEDS`.
 - Substack requires configured public/authorized publication RSS feeds in `AGENTVC_SUBSTACK_FEEDS`.
+- VC Confidence and Market Background have default Google News RSS searches and can also read configured RSS/Atom feeds.
+- SEC EDGAR works best when queries contain public-company tickers such as `MRNA, VRTX, REGN`.
+- Yahoo Finance is best-effort public quote context; use a licensed market data provider for production.
 - Unpaywall is a helper for legal open-access discovery by DOI, not a paywall bypass.
 - ICTRP uses public search portal parsing; the official XML web service may require a WHO access arrangement.

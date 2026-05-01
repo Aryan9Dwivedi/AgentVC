@@ -1,94 +1,118 @@
 {
   "queries": [
     {
-      "channel": "bioscience",
-      "source": "google_patents",
-      "query": "glioblastoma immunotherapy",
-      "limit": 5
-    },
-    {
-      "channel": "bioscience",
+      "channel": "biomedical",
       "source": "pubmed",
-      "query": "glioblastoma immunotherapy",
-      "limit": 5
+      "query": "oncology immunotherapy OR cell therapy OR gene therapy",
+      "limit": 10
     },
     {
-      "channel": "bioscience",
+      "channel": "biomedical",
       "source": "arxiv",
-      "query": "cancer biology",
+      "query": "computational biology therapeutics",
       "limit": 5
     },
     {
-      "channel": "bioscience",
+      "channel": "biomedical",
       "source": "biorxiv",
-      "query": "glioblastoma",
+      "query": "cancer",
       "limit": 5
     },
     {
-      "channel": "bioscience",
+      "channel": "biomedical",
       "source": "ssrn",
       "query": "biotech therapeutics",
       "limit": 5
     },
     {
-      "channel": "bioscience",
+      "channel": "biomedical",
       "source": "asco_annual_meeting",
-      "query": "glioblastoma immunotherapy",
+      "query": "oncology immunotherapy",
       "limit": 5
     },
     {
-      "channel": "bioscience",
+      "channel": "biomedical",
       "source": "aacr_annual_meeting",
-      "query": "glioblastoma immunotherapy",
+      "query": "cancer therapeutics",
       "limit": 5
     },
     {
-      "channel": "bioscience",
+      "channel": "biomedical",
       "source": "aan_annual_meeting",
-      "query": "glioblastoma",
+      "query": "neurodegeneration therapeutics",
       "limit": 5
     },
     {
-      "channel": "bioscience",
+      "channel": "financial_fiscal",
+      "source": "sec_edgar",
+      "query": "MRNA, VRTX, REGN, BIIB",
+      "limit": 4
+    },
+    {
+      "channel": "financial_fiscal",
+      "source": "yahoo_finance",
+      "query": "MRNA, VRTX, REGN, BIIB",
+      "limit": 4
+    },
+    {
+      "channel": "vc_confidence",
+      "source": "vc_confidence_feed",
+      "query": "biotech",
+      "limit": 10
+    },
+    {
+      "channel": "vc_confidence",
       "source": "business_wire",
       "query": "biotech",
-      "limit": 5
+      "limit": 10
     },
     {
-      "channel": "bioscience",
+      "channel": "vc_confidence",
       "source": "substack",
       "query": "biotech",
-      "limit": 5
+      "limit": 10
+    },
+    {
+      "channel": "market_background",
+      "source": "market_background_feed",
+      "query": "biotech",
+      "limit": 10
+    },
+    {
+      "channel": "market_background",
+      "source": "yahoo_finance",
+      "query": "XBI, IBB, MRNA, VRTX",
+      "limit": 4
     },
     {
       "channel": "scientific_risk",
       "source": "clinicaltrials",
-      "query": "glioblastoma",
-      "limit": 5
+      "query": "oncology immunotherapy",
+      "limit": 10
     },
     {
       "channel": "scientific_risk",
       "source": "ictrp",
-      "query": "glioblastoma",
+      "query": "oncology immunotherapy",
       "limit": 5
     },
     {
       "channel": "scientific_risk",
       "source": "pubmed",
-      "query": "glioblastoma preclinical clinical",
-      "limit": 5
-    },
-    {
-      "channel": "scientific_risk",
-      "source": "arxiv",
-      "query": "glioblastoma risk",
-      "limit": 5
+      "query": "preclinical toxicity clinical trial failure oncology",
+      "limit": 10
     },
     {
       "channel": "scientific_risk",
       "source": "biorxiv",
-      "query": "glioblastoma",
+      "query": "toxicity",
       "limit": 5
+    },
+    {
+      "channel": "patent",
+      "source": "google_patents",
+      "query": "cell therapy cancer",
+      "limit": 10
     }
   ]
 }

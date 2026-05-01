@@ -1,17 +1,10 @@
 {
   "channels": [
     {
-      "id": "bioscience",
-      "name": "Bioscience",
+      "id": "biomedical",
+      "name": "Bio Medical Channel",
+      "description": "Scientific and biomedical literature, preprints, conference abstracts, and open-access discovery.",
       "sources": [
-        {
-          "id": "google_patents",
-          "name": "Google Patents",
-          "status": "implemented_best_effort",
-          "description": "Search and find patents from across the world.",
-          "desired_fields": ["background", "summary", "brief_description_of_drawings", "claims", "authors_or_assignees", "grant_countries"],
-          "notes": "Uses Google Patents public XHR/search metadata best-effort. Prefer PatentsView/USPTO, EPO OPS, Lens, or another licensed provider for production claims/drawings coverage."
-        },
         {
           "id": "pubmed",
           "name": "PubMed",
@@ -66,6 +59,52 @@
           "notes": "Uses Crossref metadata search as a first pass; source-specific archive parsers can be added later."
         },
         {
+          "id": "unpaywall",
+          "name": "Unpaywall",
+          "status": "implemented_helper_only",
+          "description": "Open-access location discovery for scholarly articles.",
+          "desired_fields": ["oa_status", "best_oa_location"],
+          "notes": "Use only to find legal open-access copies; never bypass paywalls."
+        }
+      ]
+    },
+    {
+      "id": "financial_fiscal",
+      "name": "Financial Fiscal Channel",
+      "description": "Company financial filings, fiscal signals, and public market context.",
+      "sources": [
+        {
+          "id": "sec_edgar",
+          "name": "SEC EDGAR",
+          "status": "implemented",
+          "description": "SEC company facts and filing metadata for public companies.",
+          "desired_fields": ["cik", "ticker", "company", "revenue", "assets", "liabilities", "net_income_loss", "research_and_development_expense"],
+          "notes": "Query should contain ticker symbols or company names, such as MRNA, VRTX, REGN."
+        },
+        {
+          "id": "yahoo_finance",
+          "name": "Yahoo Finance",
+          "status": "implemented_best_effort",
+          "description": "Public quote and market context for listed companies.",
+          "desired_fields": ["symbol", "company", "price", "market_cap", "volume", "exchange"],
+          "notes": "Best-effort public endpoint; replace with licensed market data for production."
+        }
+      ]
+    },
+    {
+      "id": "vc_confidence",
+      "name": "VC Confidence Channel",
+      "description": "Funding, investor, startup momentum, and venture-market confidence signals.",
+      "sources": [
+        {
+          "id": "vc_confidence_feed",
+          "name": "VC Confidence Feed",
+          "status": "implemented_feed",
+          "description": "RSS/Atom feed-backed venture and startup signal ingestion.",
+          "desired_fields": ["title", "summary", "source_url", "published_at"],
+          "notes": "Uses default Google News RSS searches and optional AGENTVC_VC_CONFIDENCE_FEEDS."
+        },
+        {
           "id": "business_wire",
           "name": "Business Wire",
           "status": "implemented_feed_config_required",
@@ -77,23 +116,46 @@
           "id": "substack",
           "name": "Substack",
           "status": "implemented_feed_config_required",
-          "description": "Subscription-based content platform.",
+          "description": "Subscription-based expert and investor commentary.",
           "desired_fields": ["title", "body", "author", "published_at"],
-          "notes": "Connector reads configured publication RSS feeds via AGENTVC_SUBSTACK_FEEDS. No official broad API; use public/authorized feeds only."
+          "notes": "Connector reads configured publication RSS feeds via AGENTVC_SUBSTACK_FEEDS. Use public/authorized feeds only."
+        }
+      ]
+    },
+    {
+      "id": "market_background",
+      "name": "Market and Background Channel",
+      "description": "Industry news, competitive landscape, partnerships, licensing, and broader market context.",
+      "sources": [
+        {
+          "id": "market_background_feed",
+          "name": "Market Background Feed",
+          "status": "implemented_feed",
+          "description": "RSS/Atom feed-backed market and background ingestion.",
+          "desired_fields": ["title", "summary", "source_url", "published_at"],
+          "notes": "Uses default Google News RSS searches and optional AGENTVC_MARKET_BACKGROUND_FEEDS."
         },
         {
-          "id": "unpaywall",
-          "name": "Unpaywall",
-          "status": "implemented_helper_only",
-          "description": "Open-access location discovery for scholarly articles.",
-          "desired_fields": ["oa_status", "best_oa_location"],
-          "notes": "Use only to find legal open-access copies; never bypass paywalls."
+          "id": "business_wire",
+          "name": "Business Wire",
+          "status": "implemented_feed_config_required",
+          "description": "Corporate press releases and company announcements.",
+          "desired_fields": ["title", "body", "company", "published_at"],
+          "notes": "Connector reads configured RSS/Atom feeds via AGENTVC_BUSINESS_WIRE_FEEDS."
+        },
+        {
+          "id": "yahoo_finance",
+          "name": "Yahoo Finance",
+          "status": "implemented_best_effort",
+          "description": "Public market quote context.",
+          "desired_fields": ["symbol", "company", "price", "market_cap", "volume", "exchange"]
         }
       ]
     },
     {
       "id": "scientific_risk",
-      "name": "Scientific Risk",
+      "name": "Scientific Risk Channel",
+      "description": "Clinical, translational, and trial-risk evidence.",
       "sources": [
         {
           "id": "clinicaltrials",
@@ -130,6 +192,21 @@
           "status": "implemented",
           "description": "Open preprint records relevant to quantitative biology and computational methods.",
           "desired_fields": ["title", "abstract", "authors", "affiliations"]
+        }
+      ]
+    },
+    {
+      "id": "patent",
+      "name": "Patent Channel",
+      "description": "Patent and IP evidence around biotech assets, platforms, targets, and companies.",
+      "sources": [
+        {
+          "id": "google_patents",
+          "name": "Google Patents",
+          "status": "implemented_best_effort",
+          "description": "Search and find patents from across the world.",
+          "desired_fields": ["background", "summary", "brief_description_of_drawings", "claims", "authors_or_assignees", "grant_countries"],
+          "notes": "Uses Google Patents public XHR/search metadata best-effort. Prefer PatentsView/USPTO, EPO OPS, Lens, or another licensed provider for production claims/drawings coverage."
         }
       ]
     }

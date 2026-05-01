@@ -173,6 +173,80 @@ class GeneratorStore:
         )
         return {(row["channel"], row["source_name"]): int(row["count"]) for row in cursor.fetchall()}
 
+    def source_run_status(self) -> dict[tuple[str, str], dict]:
+        cursor = self.connection.execute(
+            """
+            SELECT connector_id, channel, started_at, ended_at, status, error, query
+            FROM ingestion_runs
+            ORDER BY started_at DESC
+            """
+        )
+        statuses: dict[tuple[str, str], dict] = {}
+        for row in cursor.fetchall():
+            key = (row["channel"], row["connector_id"])
+            if key not in statuses:
+                statuses[key] = dict(row)
+        return statuses
+
+    def knowledge_tree(self, packet_limit: int = 200) -> dict:
+        rows = self.connection.execute(
+            """
+            SELECT *
+            FROM source_packets
+            ORDER BY channel ASC, source_name ASC, fetched_at DESC
+            LIMIT ?
+            """,
+            (packet_limit,),
+        ).fetchall()
+
+        channels: dict[str, dict] = {}
+        for row in rows:
+            channel = channels.setdefault(
+                row["channel"],
+                {
+                    "id": row["channel"],
+                    "name": row["channel"],
+                    "packet_count": 0,
+                    "sources": {},
+                },
+            )
+            channel["packet_count"] += 1
+            source = channel["sources"].setdefault(
+                row["source_name"],
+                {
+                    "name": row["source_name"],
+                    "source_type": row["source_type"],
+                    "packet_count": 0,
+                    "packets": [],
+                },
+            )
+            source["packet_count"] += 1
+            source["packets"].append(
+                {
+                    "packet_id": row["packet_id"],
+                    "title": row["title"],
+                    "source_type": row["source_type"],
+                    "source_url": row["source_url"],
+                    "external_id": row["external_id"],
+                    "published_at": row["published_at"],
+                    "fetched_at": row["fetched_at"],
+                    "raw_text": row["raw_text"],
+                    "entities": json.loads(row["entities_json"]),
+                    "links": json.loads(row["links_json"]),
+                    "provenance": json.loads(row["provenance_json"]),
+                }
+            )
+
+        return {
+            "channels": [
+                {
+                    **channel,
+                    "sources": list(channel["sources"].values()),
+                }
+                for channel in channels.values()
+            ]
+        }
+
     def graph(self, packet_limit: int = 120) -> dict[str, list[dict]]:
         packets = self.connection.execute(
             """

@@ -113,3 +113,26 @@ class SubstackConnector(FeedConnector):
     source_type = "newsletter"
     env_var = "AGENTVC_SUBSTACK_FEEDS"
 
+
+class VCConfidenceFeedConnector(FeedConnector):
+    source_id = "vc_confidence_feed"
+    source_name = "VC Confidence Feed"
+    source_type = "vc_signal"
+    default_channel = "vc_confidence"
+    env_var = "AGENTVC_VC_CONFIDENCE_FEEDS"
+    default_feeds = [
+        "https://news.google.com/rss/search?q=biotech%20venture%20capital%20funding",
+        "https://news.google.com/rss/search?q=biopharma%20startup%20series%20A",
+    ]
+
+
+class MarketBackgroundFeedConnector(FeedConnector):
+    source_id = "market_background_feed"
+    source_name = "Market Background Feed"
+    source_type = "market_background"
+    default_channel = "market_background"
+    env_var = "AGENTVC_MARKET_BACKGROUND_FEEDS"
+    default_feeds = [
+        "https://news.google.com/rss/search?q=biotech%20market%20FDA",
+        "https://news.google.com/rss/search?q=biopharma%20partnership%20licensing",
+    ]

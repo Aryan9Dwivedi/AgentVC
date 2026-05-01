@@ -5,10 +5,17 @@ from agentvc_generator.connectors.base import SourceConnector
 from agentvc_generator.connectors.biorxiv import BiorxivConnector
 from agentvc_generator.connectors.clinical_trials import ClinicalTrialsConnector
 from agentvc_generator.connectors.crossref import AACRConnector, AANConnector, ASCOConnector, SSRNConnector
-from agentvc_generator.connectors.feeds import BusinessWireConnector, SubstackConnector
+from agentvc_generator.connectors.feeds import (
+    BusinessWireConnector,
+    MarketBackgroundFeedConnector,
+    SubstackConnector,
+    VCConfidenceFeedConnector,
+)
 from agentvc_generator.connectors.google_patents import GooglePatentsConnector
 from agentvc_generator.connectors.ictrp import ICTRPConnector
+from agentvc_generator.connectors.market_data import YahooFinanceConnector
 from agentvc_generator.connectors.pubmed import PubMedConnector
+from agentvc_generator.connectors.sec_edgar import SECEdgarConnector
 from agentvc_generator.connectors.unpaywall import UnpaywallConnector
 
 
@@ -24,8 +31,12 @@ CONNECTORS: dict[str, type[SourceConnector]] = {
     AANConnector.source_id: AANConnector,
     BusinessWireConnector.source_id: BusinessWireConnector,
     SubstackConnector.source_id: SubstackConnector,
+    VCConfidenceFeedConnector.source_id: VCConfidenceFeedConnector,
+    MarketBackgroundFeedConnector.source_id: MarketBackgroundFeedConnector,
     ICTRPConnector.source_id: ICTRPConnector,
     UnpaywallConnector.source_id: UnpaywallConnector,
+    SECEdgarConnector.source_id: SECEdgarConnector,
+    YahooFinanceConnector.source_id: YahooFinanceConnector,
 }
 
 
