@@ -1,0 +1,137 @@
+{
+  "channels": [
+    {
+      "id": "bioscience",
+      "name": "Bioscience",
+      "sources": [
+        {
+          "id": "google_patents",
+          "name": "Google Patents",
+          "status": "implemented_best_effort",
+          "description": "Search and find patents from across the world.",
+          "desired_fields": ["background", "summary", "brief_description_of_drawings", "claims", "authors_or_assignees", "grant_countries"],
+          "notes": "Uses Google Patents public XHR/search metadata best-effort. Prefer PatentsView/USPTO, EPO OPS, Lens, or another licensed provider for production claims/drawings coverage."
+        },
+        {
+          "id": "pubmed",
+          "name": "PubMed",
+          "status": "implemented",
+          "description": "Biomedical literature citations from MEDLINE, life science journals, and online books.",
+          "desired_fields": ["title", "abstract"]
+        },
+        {
+          "id": "arxiv",
+          "name": "arXiv",
+          "status": "implemented",
+          "description": "Open-access preprint repository with quantitative biology and related papers.",
+          "desired_fields": ["title", "abstract", "authors", "affiliations"]
+        },
+        {
+          "id": "biorxiv",
+          "name": "bioRxiv",
+          "status": "implemented",
+          "description": "Open-access preprint repository for biological sciences.",
+          "desired_fields": ["title", "abstract", "authors", "affiliations", "results_or_discussion"]
+        },
+        {
+          "id": "ssrn",
+          "name": "SSRN",
+          "status": "implemented_metadata",
+          "description": "Open-access research platform with articles and preprints.",
+          "desired_fields": ["abstract", "results_or_discussion", "authors", "affiliations"],
+          "notes": "Uses Crossref SSRN DOI metadata where available; direct SSRN scraping is not used."
+        },
+        {
+          "id": "asco_annual_meeting",
+          "name": "ASCO Annual Meeting",
+          "status": "implemented_metadata",
+          "description": "American Society of Clinical Oncology annual meeting abstracts and proceedings.",
+          "desired_fields": ["title", "abstract"],
+          "notes": "Uses Crossref metadata search as a first pass; year-specific archive/PDF parsers can be added later."
+        },
+        {
+          "id": "aacr_annual_meeting",
+          "name": "AACR Annual Meeting",
+          "status": "implemented_metadata",
+          "description": "American Association for Cancer Research annual meeting abstracts.",
+          "desired_fields": ["title", "abstract"],
+          "notes": "Uses Crossref metadata search as a first pass; prior-year archive parsers can be added later."
+        },
+        {
+          "id": "aan_annual_meeting",
+          "name": "AAN Annual Meeting",
+          "status": "implemented_metadata",
+          "description": "American Academy of Neurology annual meeting abstracts.",
+          "desired_fields": ["title", "abstract"],
+          "notes": "Uses Crossref metadata search as a first pass; source-specific archive parsers can be added later."
+        },
+        {
+          "id": "business_wire",
+          "name": "Business Wire",
+          "status": "implemented_feed_config_required",
+          "description": "Corporate press releases.",
+          "desired_fields": ["title", "body", "company", "published_at"],
+          "notes": "Connector reads configured RSS/Atom feeds via AGENTVC_BUSINESS_WIRE_FEEDS. Do not bypass paywalls; use licensed feeds, official RSS, or public pages only."
+        },
+        {
+          "id": "substack",
+          "name": "Substack",
+          "status": "implemented_feed_config_required",
+          "description": "Subscription-based content platform.",
+          "desired_fields": ["title", "body", "author", "published_at"],
+          "notes": "Connector reads configured publication RSS feeds via AGENTVC_SUBSTACK_FEEDS. No official broad API; use public/authorized feeds only."
+        },
+        {
+          "id": "unpaywall",
+          "name": "Unpaywall",
+          "status": "implemented_helper_only",
+          "description": "Open-access location discovery for scholarly articles.",
+          "desired_fields": ["oa_status", "best_oa_location"],
+          "notes": "Use only to find legal open-access copies; never bypass paywalls."
+        }
+      ]
+    },
+    {
+      "id": "scientific_risk",
+      "name": "Scientific Risk",
+      "sources": [
+        {
+          "id": "clinicaltrials",
+          "name": "ClinicalTrials.gov",
+          "status": "implemented",
+          "description": "US and international clinical study registry records.",
+          "desired_fields": ["clinicaltrials_gov_id", "sponsor", "brief_summary", "intervention_or_treatment", "eligibility_criteria", "publications"]
+        },
+        {
+          "id": "ictrp",
+          "name": "International Clinical Trials Registry Platform",
+          "status": "implemented_best_effort",
+          "description": "WHO clinical trial registry search portal.",
+          "desired_fields": ["primary_sponsor", "main_id", "date_of_registration", "public_title", "key_inclusion_exclusion_criteria", "health_condition", "interventions", "primary_outcomes", "results"],
+          "notes": "Uses public ICTRP search portal parsing as a first pass. Official ICTRP XML web service may require WHO arrangement/cost recovery."
+        },
+        {
+          "id": "pubmed",
+          "name": "PubMed",
+          "status": "implemented",
+          "description": "Preclinical and clinical biomedical literature citations.",
+          "desired_fields": ["title", "abstract"]
+        },
+        {
+          "id": "biorxiv",
+          "name": "bioRxiv",
+          "status": "implemented",
+          "description": "Biological science preprints and datasets where available.",
+          "desired_fields": ["title", "abstract", "authors", "affiliations"]
+        },
+        {
+          "id": "arxiv",
+          "name": "arXiv",
+          "status": "implemented",
+          "description": "Open preprint records relevant to quantitative biology and computational methods.",
+          "desired_fields": ["title", "abstract", "authors", "affiliations"]
+        }
+      ]
+    }
+  ]
+}

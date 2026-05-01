@@ -1,0 +1,94 @@
+{
+  "queries": [
+    {
+      "channel": "bioscience",
+      "source": "google_patents",
+      "query": "glioblastoma immunotherapy",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "pubmed",
+      "query": "glioblastoma immunotherapy",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "arxiv",
+      "query": "cancer biology",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "biorxiv",
+      "query": "glioblastoma",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "ssrn",
+      "query": "biotech therapeutics",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "asco_annual_meeting",
+      "query": "glioblastoma immunotherapy",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "aacr_annual_meeting",
+      "query": "glioblastoma immunotherapy",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "aan_annual_meeting",
+      "query": "glioblastoma",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "business_wire",
+      "query": "biotech",
+      "limit": 5
+    },
+    {
+      "channel": "bioscience",
+      "source": "substack",
+      "query": "biotech",
+      "limit": 5
+    },
+    {
+      "channel": "scientific_risk",
+      "source": "clinicaltrials",
+      "query": "glioblastoma",
+      "limit": 5
+    },
+    {
+      "channel": "scientific_risk",
+      "source": "ictrp",
+      "query": "glioblastoma",
+      "limit": 5
+    },
+    {
+      "channel": "scientific_risk",
+      "source": "pubmed",
+      "query": "glioblastoma preclinical clinical",
+      "limit": 5
+    },
+    {
+      "channel": "scientific_risk",
+      "source": "arxiv",
+      "query": "glioblastoma risk",
+      "limit": 5
+    },
+    {
+      "channel": "scientific_risk",
+      "source": "biorxiv",
+      "query": "glioblastoma",
+      "limit": 5
+    }
+  ]
+}
