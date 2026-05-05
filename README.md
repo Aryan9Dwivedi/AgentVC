@@ -33,12 +33,24 @@ Implemented connector paths include:
 
 ## Quick Start
 
+Windows / PowerShell:
+
 ```powershell
 python -m agentvc_generator list-sources
 python -m agentvc_generator run-watchlist --once
 python -m agentvc_generator serve --port 8000
 python -m agentvc_generator ingest --source pubmed --query "glioblastoma immunotherapy" --limit 5
 python -m agentvc_generator ingest --source clinicaltrials --query "glioblastoma" --limit 5
+```
+
+macOS / Terminal:
+
+```bash
+python3 -m agentvc_generator list-sources
+python3 -m agentvc_generator run-watchlist --once
+python3 -m agentvc_generator serve --port 8000
+python3 -m agentvc_generator ingest --source pubmed --query "glioblastoma immunotherapy" --limit 5
+python3 -m agentvc_generator ingest --source clinicaltrials --query "glioblastoma" --limit 5
 ```
 
 Default storage is local SQLite at `data/generator.sqlite`.
@@ -53,8 +65,16 @@ The local admin app runs at `http://127.0.0.1:8000` and provides:
 
 For repeated polling:
 
+Windows / PowerShell:
+
 ```powershell
 python -m agentvc_generator run-watchlist --interval-minutes 60
+```
+
+macOS / Terminal:
+
+```bash
+python3 -m agentvc_generator run-watchlist --interval-minutes 60
 ```
 
 Edit `config/watchlist.json` to add source/channel/query combinations.
